@@ -6,9 +6,65 @@
     <link rel="stylesheet" type="text/css" href="/styles.css">
 </head>
 <body>
+    <header>
+        <h1>Bienvenido a la Web de Oscar</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#crear">Crear Usuario</a></li>
+                <li><a href="#listar">Listar Usuarios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="container">
-        <h1>Bienvenido a la Aplicación CRUD</h1>
-        <p>Esta es la página inicial de tu aplicación.</p>
+        <section id="inicio">
+            <h2>Inicio</h2>
+            <p>Esta es la página inicial de tu aplicación.</p>
+        </section>
+        <section id="crear">
+            <h2>Crear Usuario</h2>
+            <div th:if="${message}" id="success-message" class="message">
+                <p th:text="${message}"></p>
+            </div>
+            <form action="/user" method="post">
+                <label for="firstName">Nombre:</label>
+                <input type="text" id="firstName" name="firstName" required>
+                <br>
+                <label for="lastName">Apellido:</label>
+                <input type="text" id="lastName" name="lastName" required>
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+                <button type="submit">Guardar</button>
+            </form>
+        </section>
+        <section id="listar">
+            <h2>Listar Usuarios</h2>
+            <p>Aquí puedes ver la lista de usuarios.</p>
+        </section>
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <p>Puedes contactar a través de teléfono o email </p>
+            <p>Nombre: Oscar Nieto</p>
+            <p>Dirección: 28010 Madrid, España</p>
+            <p>Telefono: 616588936 </p>
+            <p>Email: <a href="mailto:oscarniro@gmail.com">Email Oscar</a></p>
+            <p>GitHub: <a href="https://github.com/ONieto7" target="_blank">GitHub de Oscar</a></p>
+            <p>CV: <a href="/doc/CV_Oscar_Nieto.pdf" target="_blank">Descargar CV</a></p>
+        </section>
     </div>
+    <script>
+        // JavaScript para ocultar el mensaje después de 5 segundos
+        window.onload = function() {
+            setTimeout(function() {
+                var messageDiv = document.getElementById('success-message');
+                if (messageDiv) {
+                    messageDiv.style.display = 'none';
+                }
+            }, 5000); // 5000 milisegundos = 5 segundos
+        };
+    </script>
 </body>
 </html>

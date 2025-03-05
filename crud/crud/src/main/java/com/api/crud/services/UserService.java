@@ -44,4 +44,7 @@ public class UserService {
             return false;
         }
     }
+    public boolean emailExists(String email) {
+        return userRepository.findByEmail(email).isPresent();
+    }
 }

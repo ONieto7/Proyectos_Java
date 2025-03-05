@@ -3,12 +3,14 @@ package com.api.crud.controllers;
 import com.api.crud.models.UserModel;
 import com.api.crud.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/user")
 public class UserController {
 
@@ -20,9 +22,15 @@ public class UserController {
         return this.userService.getUsers();
     }
 
-    @PostMapping
-    public UserModel saveUser(@RequestBody UserModel user){
-        return this.userService.saveUser(user);
+    @PostMapping(consumes = "application/x-www-form-urlencoded")
+    public String saveUser(@ModelAttribute UserModel user, RedirectAttributes redirectAttributes) {
+        if (userService.emailExists(user.getEmail())) {
+            redirectAttributes.addFlashAttribute("message", "Usuario ya registrado con ese email");
+            return "redirect:/#crear";
+        }
+        userService.saveUser(user);
+        redirectAttributes.addFlashAttribute("message", "Usuario registrado con éxito");
+        return "redirect:/#crear";
     }
 
     @GetMapping(path = "/{id}")
