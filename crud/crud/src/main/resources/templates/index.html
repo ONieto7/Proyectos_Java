@@ -65,6 +65,21 @@
                 }
             }, 5000); // 5000 milisegundos = 5 segundos
         };
+        // Validación del formulario
+        function validateForm() {
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var email = document.getElementById('email').value;
+            if (firstName === "" || lastName === "" || email === "") {
+                alert("Todos los campos son obligatorios");
+                return false;
+            }
+            return true;
+        }
     </script>
+    
+    <footer>
+        <p>&copy; 2025 Oscar Nieto. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
