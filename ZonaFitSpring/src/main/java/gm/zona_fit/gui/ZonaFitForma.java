@@ -3,13 +3,10 @@ package gm.zona_fit.gui;
 import gm.zona_fit.modelo.Cliente;
 import gm.zona_fit.servicio.ClienteServicio;
 import gm.zona_fit.servicio.IClienteServicio;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -27,7 +24,6 @@ public class ZonaFitForma extends JFrame{
     private DefaultTableModel tablaModeloClientes;
     private Integer idCliente;
 
-    @Autowired
     public ZonaFitForma(ClienteServicio clienteServicio){
         this.clienteServicio = clienteServicio;
         iniciarForma();
@@ -50,24 +46,6 @@ public class ZonaFitForma extends JFrame{
         setLocationRelativeTo(null);//centra ventana
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-        //this.tablaModeloClientes = new DefaultTableModel(0, 4);
-        // Evitamos la edicion de los valores de las celdas de la tabla
-        this.tablaModeloClientes = new DefaultTableModel(0,4){
-            @Override
-            public boolean isCellEditable(int row, int column){
-                return false;
-            }
-        };
-        String[] cabeceros = {"Id", "Nombre", "Apellido", "Membresia"};
-        this.tablaModeloClientes.setColumnIdentifiers(cabeceros);
-        this.clientesTabla = new JTable(tablaModeloClientes);
-        // Restringimos la seleccion de la tabla a un solo registro
-        this.clientesTabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        // Cargar listado de clientes
-        listarClientes();
-    }
 
     private void listarClientes(){
         this.tablaModeloClientes.setRowCount(0);
