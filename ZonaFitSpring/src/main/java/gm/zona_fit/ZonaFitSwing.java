@@ -3,7 +3,7 @@ package gm.zona_fit;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import gm.zona_fit.gui.ZonaFitForma;
 import org.springframework.boot.WebApplicationType;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+//import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import javax.swing.*;

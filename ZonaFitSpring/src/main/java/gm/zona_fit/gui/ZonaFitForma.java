@@ -3,13 +3,12 @@ package gm.zona_fit.gui;
 import gm.zona_fit.modelo.Cliente;
 import gm.zona_fit.servicio.ClienteServicio;
 import gm.zona_fit.servicio.IClienteServicio;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+//import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -27,7 +26,6 @@ public class ZonaFitForma extends JFrame{
     private DefaultTableModel tablaModeloClientes;
     private Integer idCliente;
 
-    @Autowired
     public ZonaFitForma(ClienteServicio clienteServicio){
         this.clienteServicio = clienteServicio;
         iniciarForma();
@@ -51,7 +49,7 @@ public class ZonaFitForma extends JFrame{
     }
 
     private void createUIComponents() {
-        // TODO: place custom component creation code here
+        // Coloca aquí el código de creación de componentes personalizados
         //this.tablaModeloClientes = new DefaultTableModel(0, 4);
         // Evitamos la edicion de los valores de las celdas de la tabla
         this.tablaModeloClientes = new DefaultTableModel(0,4){
